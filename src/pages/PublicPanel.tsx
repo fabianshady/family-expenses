@@ -59,13 +59,6 @@ export default function PublicPanel() {
       .reduce((sum, exp) => sum + exp.amount, 0)
   })).filter(c => c.total > 0);
 
-  const totalByPerson = people.map(p => ({
-    name: p.name,
-    total: filteredExpenses
-      .filter(exp => exp.paidBy === p.id)
-      .reduce((sum, exp) => sum + exp.amount, 0)
-  })).filter(p => p.total > 0);
-
   const totalByDate = filteredExpenses.reduce((acc, exp) => {
     const label = exp.date;
     const entry = acc.find(e => e.date === label);
